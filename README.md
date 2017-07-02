@@ -1,1 +1,1 @@
-## 基础开发平台Basic Develop PlatForm 简称 BDP
+## 基础开发平台Basic Development PlatForm 简称 BDP
