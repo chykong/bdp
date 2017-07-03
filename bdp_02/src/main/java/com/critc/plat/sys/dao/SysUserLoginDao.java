@@ -23,8 +23,8 @@ public class SysUserLoginDao extends BaseDao<SysUserLogin, SysUserloginSearchVO>
      * @param sysUserLogin
      */
     public void add(SysUserLogin sysUserLogin) {
-        String sql = "insert into t_sys_userlogin(id,user_id,login_date,login_ip,terminal,explorerType,explorerVersion)";
-        sql += " values(seq_t_sys_userlogin.nextval,:userId,:loginDate,:loginIp,:terminal,:explorerType,:explorerVersion)";
+        String sql = "insert into t_sys_userlogin(user_id,login_date,login_ip,terminal,explorerType,explorerVersion)";
+        sql += " values(:userId,:loginDate,:loginIp,:terminal,:explorerType,:explorerVersion)";
         insert(sql, sysUserLogin);
     }
 

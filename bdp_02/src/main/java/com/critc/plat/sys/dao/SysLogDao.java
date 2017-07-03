@@ -19,8 +19,8 @@ import java.util.List;
 public class SysLogDao extends BaseDao<SysLog, SysLogSearchVO> {
 
     public int add(SysLog sysLog) {
-        String sql = "insert into t_sys_log(id,user_id,opera_date,opera_ip,module_name,opera_name,opera_url,opera_params)"
-                + " values(seq_t_sys_log.nextval,:userId,sysdate,:operaIp,:moduleName,:operaName,:operaUrl,:operaParams)";
+        String sql = "insert into t_sys_log(user_id,opera_date,opera_ip,module_name,opera_name,opera_url,opera_params)"
+                + " values(:userId,sysdate,:operaIp,:moduleName,:operaName,:operaUrl,:operaParams)";
         return insert(sql, sysLog);
     }
 

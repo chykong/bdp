@@ -23,8 +23,8 @@ public class SysRoleDao extends BaseDao<SysRole, SysRole> {
      * @return
      */
     public int add(SysRole sysRole) {
-        String sql = "insert into t_sys_role(id,name,description,display_order,created_by,created_at)" +
-                " values(seq_t_sys_role.nextval,:name,:description,:displayOrder,:createdBy,sysdate)";
+        String sql = "insert into t_sys_role(name,description,display_order,created_by,created_at)" +
+                " values(:name,:description,:displayOrder,:createdBy,sysdate)";
         return insertForId(sql, sysRole, "id");
     }
 

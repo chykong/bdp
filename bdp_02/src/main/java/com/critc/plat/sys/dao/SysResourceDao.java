@@ -22,8 +22,8 @@ public class SysResourceDao extends BaseDao<SysResource, SysResource> {
      * @return
      */
     public int add(SysResource sysResource) {
-        String sql = "insert into t_sys_resource(id,name,code,parent_id,url,target,iconImg,display_order,type,description)" +
-                " values(seq_t_sys_resource.nextval,:name,:code,:parentId,:url,:target,:iconImg,:displayOrder,:type,:description)";
+        String sql = "insert into t_sys_resource(name,code,parent_id,url,target,iconImg,display_order,type,description)" +
+                " values(:name,:code,:parentId,:url,:target,:iconImg,:displayOrder,:type,:description)";
         return insert(sql, sysResource);
     }
 

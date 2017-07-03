@@ -53,7 +53,7 @@ public class SysRoleresourceDao extends BaseDao<SysRoleResource, SysRoleResource
      * @param resourceId
      */
     public void addRoleResource(int roleId, int resourceId) {
-        String sql = "insert into t_sys_roleresource(id,role_id,resource_id) values(seq_t_sys_resource.nextval,?,?)";
+        String sql = "insert into t_sys_roleresource(role_id,resource_id) values(?,?)";
         update(sql, roleId, resourceId);
     }
 

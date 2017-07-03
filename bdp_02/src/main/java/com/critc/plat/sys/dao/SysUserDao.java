@@ -22,8 +22,8 @@ public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {
      * @return
      */
     public int add(SysUser sysUser) {
-        String sql = "insert into t_sys_user(id,username,password,randomcode,status,realname,mobile,created_at,created_by,role_id)";
-        sql += " values(seq_t_sys_user.nextval,:username,:password,:randomcode,1,:realname,:mobile,sysdate,:createdBy,:roleId)";
+        String sql = "insert into t_sys_user(username,password,randomcode,status,realname,mobile,created_at,created_by,role_id)";
+        sql += " values(:username,:password,:randomcode,1,:realname,:mobile,sysdate,:createdBy,:roleId)";
         return insertForId(sql, sysUser, "id");
     }
 
