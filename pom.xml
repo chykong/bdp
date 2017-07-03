@@ -5,7 +5,10 @@
   <groupId>com.critc</groupId>
   <artifactId>bdp</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <modules>
+    <module>bdp_01</module>
+  </modules>
+  <packaging>pom</packaging>
 
   <name>bdp</name>
   <url>http://maven.apache.org</url>
