@@ -24,7 +24,7 @@ public class SysRoleDao extends BaseDao<SysRole, SysRole> {
      */
     public int add(SysRole sysRole) {
         String sql = "insert into t_sys_role(name,description,display_order,created_by,created_at)" +
-                " values(:name,:description,:displayOrder,:createdBy,sysdate)";
+                " values(:name,:description,:displayOrder,:createdBy,now())";
         return insertForId(sql, sysRole, "id");
     }
 
@@ -35,7 +35,7 @@ public class SysRoleDao extends BaseDao<SysRole, SysRole> {
      * @return
      */
     public int update(SysRole sysRole) {
-        String sql = "update t_sys_role set name=:name,description=:description,display_order=:displayOrder,last_modified_by=:lastModifiedBy,last_modified_at=sysdate where id=:id";
+        String sql = "update t_sys_role set name=:name,description=:description,display_order=:displayOrder,last_modified_by=:lastModifiedBy,last_modified_at=now() where id=:id";
         return update(sql, sysRole);
     }
 

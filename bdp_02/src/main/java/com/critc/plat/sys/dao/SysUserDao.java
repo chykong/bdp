@@ -23,7 +23,7 @@ public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {
      */
     public int add(SysUser sysUser) {
         String sql = "insert into t_sys_user(username,password,randomcode,status,realname,mobile,created_at,created_by,role_id)";
-        sql += " values(:username,:password,:randomcode,1,:realname,:mobile,sysdate,:createdBy,:roleId)";
+        sql += " values(:username,:password,:randomcode,1,:realname,:mobile,now(),:createdBy,:roleId)";
         return insertForId(sql, sysUser, "id");
     }
 
@@ -33,7 +33,7 @@ public class SysUserDao extends BaseDao<SysUser, SysUserSearchVO> {
      * @return
      */
     public int update(SysUser sysUser) {
-        String sql = "update t_sys_user set realname=:realname,role_id=:roleId,mobile=:mobile,last_modified_by=:lastModifiedBy,last_modified_at=sysdate where id=:id ";
+        String sql = "update t_sys_user set realname=:realname,role_id=:roleId,mobile=:mobile,last_modified_by=:lastModifiedBy,last_modified_at=now() where id=:id ";
         return update(sql, sysUser);
     }
 
