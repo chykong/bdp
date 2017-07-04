@@ -18,12 +18,6 @@ import java.util.List;
  *
  * @author 孔垂云
  * @date 2017-06-13
- * <p>
- * 系统的所有权限控制都在该类中处理，共有三个cache
- * 1、系统左侧菜单，通过RoleId来生成，cache格式为roleMenu_+roleId
- * 2、系统所有按钮权限，页面显示按钮时使用，cache格式为roleFunctions_+roleId
- * 3、系统能访问资源权限，包括所有资源的url，hashmap数据类型，key为url，value为0/1，,1具有权限，0不具有权限，cache格式为roleResources_+roleId
- * 当修改模块或新增删除模块时，清空所有cache，当角色修改时，清空上述三个对应roleId的cache
  */
 @Service
 public class SysRoleService {
