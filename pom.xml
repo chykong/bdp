@@ -8,6 +8,7 @@
   <modules>
     <module>bdp_01</module>
       <module>bdp_02</module>
+      <module>bdp_03</module>
   </modules>
   <packaging>pom</packaging>
 
