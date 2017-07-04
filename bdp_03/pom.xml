@@ -20,6 +20,7 @@
         <junit.version>4.12</junit.version>
         <jdk.version>1.8</jdk.version>
         <sitemesh.version>3.0.1</sitemesh.version>
+        <jackson.version>2.5.4</jackson.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
     </properties>
 
@@ -109,6 +110,23 @@
             <groupId>org.sitemesh</groupId>
             <artifactId>sitemesh</artifactId>
             <version>${sitemesh.version}</version>
+        </dependency>
+
+        <!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
     </dependencies>
     <build>
