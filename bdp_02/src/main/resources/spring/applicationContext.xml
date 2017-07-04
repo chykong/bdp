@@ -58,4 +58,13 @@
             <tx:method name="*" read-only="true"/>
         </tx:attributes>
     </tx:advice>
+
+
+    <!--设置公共参数 -->
+    <bean id="pubConfig" class="com.critc.plat.core.pub.PubConfig">
+        <property name="imageServer" value="${imageServer}"/>
+        <property name="imageUploadPath" value="${imageUploadPath}"/>
+        <property name="staticServer" value="${staticServer}"/>
+        <property name="dynamicServer" value="${dynamicServer}"/>
+    </bean>
 </beans>
