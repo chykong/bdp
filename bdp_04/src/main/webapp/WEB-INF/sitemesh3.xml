@@ -8,4 +8,11 @@
 
     <!-- 指明满足“/login”的页面，将被排除，不被装饰 -->
     <mapping path="/login.htm" exclue="true" />
+    <mapping path="/sys/user/searchUserLogin.htm" exclue="true" />
+
+    <!-- 自定义标签 -->
+    <content-processor>
+        <tag-rule-bundle class="com.critc.plat.core.tagrules.ScriptTagRuleBundle" />
+        <tag-rule-bundle class="com.critc.plat.core.tagrules.CssTagRuleBundle" />
+    </content-processor>
 </sitemesh>

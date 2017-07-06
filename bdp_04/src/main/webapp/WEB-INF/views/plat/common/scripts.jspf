@@ -15,7 +15,6 @@
 <script src="${staticServer}/assets/ace1.4/js/ace-elements.js"></script>
 <script src="${staticServer}/assets/ace1.4/js/ace.js"></script>
 
-<script src="${staticServer}/assets/common/js/common.js"></script>
 <!-- plugins -->
 
 <script src="${staticServer}/assets/ace1.4/components/bootbox/bootbox.js"></script>

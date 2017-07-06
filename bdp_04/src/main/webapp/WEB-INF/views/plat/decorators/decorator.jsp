@@ -13,6 +13,7 @@
 
     <%@include file="../common/styles.jspf" %>
     <sitemesh:write property='head'/>
+    <sitemesh:write property='critc-css'/>
 </head>
 <body class="no-skin">
 <%@ include file="../common/header.jspf" %>
@@ -25,5 +26,6 @@
     </div>
 </div>
 <%@include file="../common/scripts.jspf" %>
+<sitemesh:write property='critc-script'/>
 </body>
 </html>

@@ -2,10 +2,12 @@ package com.critc.plat.sys.controller;
 
 import com.critc.plat.core.pub.PubConfig;
 import com.critc.plat.sys.model.SysUser;
+import com.critc.plat.sys.model.SysUserLogin;
 import com.critc.plat.sys.service.SysRoleService;
 import com.critc.plat.sys.service.SysUserLoginService;
 import com.critc.plat.sys.service.SysUserService;
 import com.critc.plat.sys.vo.SysUserSearchVO;
+import com.critc.plat.sys.vo.SysUserloginSearchVO;
 import com.critc.plat.util.page.PageNavigate;
 import com.critc.plat.util.string.BackUrlUtil;
 import com.critc.plat.util.string.StringUtil;
@@ -225,4 +227,32 @@ public class SysUserController {
         else
             WebUtil.out(response, "false");
     }
+
+    /**
+     * 用户登录信息
+     *
+     * @param request
+     * @param response
+     */
+    @RequestMapping("/searchUserLogin")
+    public ModelAndView searchUserLogin(HttpServletRequest request, HttpServletResponse response, SysUserloginSearchVO sysUserloginSearchVO) {
+        ModelAndView mv = new ModelAndView();
+        int recordCount = sysUserLoginService.count(sysUserloginSearchVO);// 获取查询总数
+        String url = createUserLoginUrl(sysUserloginSearchVO);
+        PageNavigate pageNavigate = new PageNavigate(url, sysUserloginSearchVO.getPageIndex(), recordCount);//
+        List<SysUserLogin> list = sysUserLoginService.list(sysUserloginSearchVO);
+        mv.addObject("pageNavigate", pageNavigate);// 设置分页的变量
+        mv.addObject("list", list);// 把获取的记录放到mv里面
+        mv.setViewName("/plat/sys/user/login");// 跳转至指定页面
+        return mv;
+    }
+
+    // 设置分页url，一般有查询条件的才会用到
+    private String createUserLoginUrl(SysUserloginSearchVO sysUserloginSearchVO) {
+        String url = pubConfig.getDynamicServer() + "/sys/user/searchUserLogin.htm?userId=" + sysUserloginSearchVO.getUserId();
+        return url;
+    }
+
+
+
 }
