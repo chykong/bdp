@@ -9,5 +9,3 @@
 <link rel="stylesheet" href="${staticServer}/assets/ace1.4/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 <link rel="stylesheet" href="${staticServer}/assets/ace1.4/css/ace-skins.css" />
 <link rel="stylesheet" type="text/css" href="${staticServer }/assets/datetimepicker2.1.9/jquery.datetimepicker.css"/>
-<!-- ace settings handler -->
-<script src="../assets/js/ace-extra.js"></script>

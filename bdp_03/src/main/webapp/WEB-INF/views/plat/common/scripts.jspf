@@ -1,4 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!--[if !IE]> -->
+<script src="${staticServer}/assets/ace1.4/components/jquery/dist/jquery.js"></script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script src="${staticServer}/assets/ace1.4/components/jquery.1x/dist/jquery.js"></script>
+<![endif]-->
 
 <script src="${staticServer}/assets/ace1.4/components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="${staticServer}/assets/ace1.4/components/jquery-ui/jquery-ui.js"></script>
