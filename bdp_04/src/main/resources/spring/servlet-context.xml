@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--读取配置文件-->
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:/application.properties"/>
+
+    <!-- 默认的注解映射的支持，自动注册DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter -->
+    <mvc:annotation-driven/>
+
+    <!-- 设置Controller注解，及json格式解析器-->
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean id="jacksonMessageConverter"
+                  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    <!-- 设置请求适配器 -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+    </bean>
+    <!-- 设置静态资源文件夹 -->
+    <mvc:resources mapping="/assets/**" location="/assets/"/>
+    <!-- 设置全局公共变量 -->
+    <bean id="viewResolver" abstract="true">
+        <property name="attributes">
+            <props>
+                <prop key="versionNo">${versionNo}</prop>
+                <prop key="imageServer">${imageServer}</prop>
+                <prop key="staticServer">${staticServer}</prop>
+                <prop key="dynamicServer">${dynamicServer}</prop>
+                <prop key="webTitle">${webTitle}</prop>
+            </props>
+        </property>
+    </bean>
+    <!--设置视图解析器及视图对应文件位置和后缀名，当前设置jsp -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" parent="viewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!-- 设置注解的扫描包名t -->
+    <mvc:default-servlet-handler/>
+    <context:component-scan base-package="com.critc.*.*.controller">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+</beans>

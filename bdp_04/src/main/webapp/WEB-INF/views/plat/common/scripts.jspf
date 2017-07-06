@@ -1,0 +1,27 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!--[if !IE]> -->
+<script src="${staticServer}/assets/ace1.4/components/jquery/dist/jquery.js"></script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script src="${staticServer}/assets/ace1.4/components/jquery.1x/dist/jquery.js"></script>
+<![endif]-->
+
+<script src="${staticServer}/assets/ace1.4/components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="${staticServer}/assets/ace1.4/components/jquery-ui/jquery-ui.js"></script>
+
+<!-- ace scripts -->
+<script src="${staticServer}/assets/ace1.4/js/ace-elements.js"></script>
+<script src="${staticServer}/assets/ace1.4/js/ace.js"></script>
+
+<script src="${staticServer}/assets/common/js/common.js"></script>
+<!-- plugins -->
+
+<script src="${staticServer}/assets/ace1.4/components/bootbox/bootbox.js"></script>
+<!-- inline scripts related to this page -->
+<script type="text/javascript"> ace.vars['base'] = '/'; </script>
+<!-- page specific plugin scripts -->
+<script src="${staticServer }/assets/datetimepicker2.1.9/jquery.datetimepicker.js" type="text/javascript"></script>
+<script src="${staticServer }/assets/ace1.4/components/jquery-validation/dist/jquery.validate.js" type="text/javascript"></script>
+<script src="${staticServer }/assets/ace1.4/components/jquery-ui/jquery-ui.js"></script>
