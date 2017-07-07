@@ -72,10 +72,10 @@ public class SysLogDao extends BaseDao<SysLog, SysLogSearchVO> {
             sql += " and user_id=0";
         }
         if (StringUtil.isNotNullOrEmpty(sysLogSearchVO.getStartDate())) {
-            sql += " and to_char(opera_date,'yyyy-mm-dd')>=:startDate";
+            sql += " and date(opera_date)>=:startDate";
         }
         if (StringUtil.isNotNullOrEmpty(sysLogSearchVO.getEndDate())) {
-            sql += " and to_char(opera_date,'yyyy-mm-dd')<=:endDate";
+            sql += " and date(opera_date)<=:endDate";
         }
         return sql;
     }

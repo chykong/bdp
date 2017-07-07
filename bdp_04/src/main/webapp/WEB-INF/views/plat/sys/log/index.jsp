@@ -102,33 +102,34 @@
 </div>
 <!-- /.main-container -->
 
-<script type="text/javascript">
-    $(function () {
-        $("#btnSearch").bind('click', searchUser);
-
-        $('#startDate').datetimepicker({
-            lang: 'ch',
-            timepicker: false,
-            format: 'Y-m-d'
-        });
-        $('#endDate').datetimepicker({
-            lang: 'ch',
-            timepicker: false,
-            format: 'Y-m-d'
-        });
-    })
-
-    // 查询方法
-    var searchUser = function () {
-        var url = "index.htm?";
-        if ($("#userId").val() != '')
-            url += "userId=" + $("#userId").val();
-        if ($("#startDate").val() != '')
-            url += "&startDate=" + $("#startDate").val();
-        if ($("#endDate").val() != '')
-            url += "&endDate=" + $("#endDate").val();
-        window.location = encodeURI(url);
-    }
-
-</script>
 </body>
+<critc-script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSearch").bind('click', searchUser);
+
+            $('#startDate').datetimepicker({
+                lang: 'ch',
+                timepicker: false,
+                format: 'Y-m-d'
+            });
+            $('#endDate').datetimepicker({
+                lang: 'ch',
+                timepicker: false,
+                format: 'Y-m-d'
+            });
+        })
+
+        // 查询方法
+        var searchUser = function () {
+            var url = "index.htm?";
+            if ($("#userId").val() != '')
+                url += "userId=" + $("#userId").val();
+            if ($("#startDate").val() != '')
+                url += "&startDate=" + $("#startDate").val();
+            if ($("#endDate").val() != '')
+                url += "&endDate=" + $("#endDate").val();
+            window.location = encodeURI(url);
+        }
+    </script>
+</critc-script>

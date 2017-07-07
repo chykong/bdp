@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -70,14 +69,4 @@ public class SysLogController{
         return url;
     }
 
-    /**
-     * 下载操作日志
-     *
-     * @param request
-     * @param response
-     */
-    @RequestMapping("/downloadLog")
-    public void downloadLog(HttpServletRequest request, HttpServletResponse response, SysLogSearchVO sysLogSearchVO) {
-        sysLogService.exportLog(request.getServletContext().getRealPath("/download"), sysLogSearchVO, request, response);
-    }
 }

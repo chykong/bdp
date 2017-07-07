@@ -105,7 +105,6 @@
                     maxlength: 20
                 },
                 mobile: {
-                    telephone:true,
                     required: true,
                     maxlength: 11
                 },
