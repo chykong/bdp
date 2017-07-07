@@ -1,5 +1,12 @@
 package com.critc.plat.util.web;
 
+import com.critc.plat.core.spring.SpringContextHolder;
+import com.critc.plat.sys.service.SysRoleService;
+import com.critc.plat.util.session.SessionUtil;
+import com.critc.plat.util.session.UserSession;
+
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 页面标签，用于直接处理页面数据，展示使用
  *
@@ -23,4 +30,16 @@ public class WebTag {
             return "";
     }
 
+
+    /**
+     * 生成菜单
+     *
+     * @param request 请求
+     * @return 菜单
+     */
+    public static String createMenu(HttpServletRequest request) {
+        UserSession userSession = SessionUtil.getUserSession(request);
+        SysRoleService sysRoleService = SpringContextHolder.getBean("sysRoleService");
+        return sysRoleService.createMenuStr(userSession.getRoleId());
+    }
 }

@@ -13,5 +13,10 @@
 		<function-class>com.critc.plat.util.web.WebTag</function-class>
 		<function-signature>java.lang.String getUserStatus(java.lang.Integer)</function-signature>
 	</function>
-
+	<function>
+		<description>生成菜单</description>
+		<name>createMenu</name>
+		<function-class>com.critc.plat.util.web.WebTag</function-class>
+		<function-signature>java.lang.String createMenu(javax.servlet.http.HttpServletRequest)</function-signature>
+	</function>
 </taglib>

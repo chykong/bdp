@@ -1,15 +1,19 @@
 package com.critc.plat.sys.service;
 
+import com.critc.plat.core.pub.PubConfig;
 import com.critc.plat.sys.dao.SysResourceDao;
 import com.critc.plat.sys.dao.SysRoleDao;
 import com.critc.plat.sys.dao.SysRoleresourceDao;
+import com.critc.plat.sys.model.SysResource;
 import com.critc.plat.sys.model.SysRole;
 import com.critc.plat.sys.model.SysRoleResource;
+import com.critc.plat.util.cache.EhCacheUtil;
 import com.critc.plat.util.model.ComboboxVO;
 import com.critc.plat.util.string.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,6 +32,8 @@ public class SysRoleService {
     private SysResourceDao sysResourceDao;
     @Autowired
     private SysRoleresourceDao sysRoleresourceDao;
+    @Autowired
+    private PubConfig pubConfig;
 
     /**
      * 新增角色，同时新增对应的权限
@@ -161,5 +167,44 @@ public class SysRoleService {
             }
         }
         return hashRoleResources;
+    }
+
+    /**
+     * 根据角色id生成该角色对应的菜单
+     *
+     * @param role_id
+     * @return
+     */
+    public String createMenuStr(int role_id) {
+        String menu = EhCacheUtil.get("sysCache", "roleMenu_" + role_id);
+        if (menu == null) {
+            StringBuffer sb = new StringBuffer();
+            List<SysResource> listResource = sysResourceDao.list();// 模块列表
+            List<SysRoleResource> listRoleResource = sysRoleresourceDao.listRoleResourceByType(role_id, 1);// 角色模块列表
+            List<Integer> displayResourceIdList = new ArrayList<>();
+            for (SysRoleResource sysRoleResource : listRoleResource) {
+                displayResourceIdList.add(sysRoleResource.getResourceId());
+            }
+            for (SysResource sysResource : listResource) {
+                if (sysResource.getParentId() == 1 && displayResourceIdList.contains(sysResource.getId())) {
+                    sb.append("<li class=\"\"><a href=\"#\" class=\"dropdown-toggle\"> <i class=\"menu-icon fa "
+                            + sysResource.getIconImg() + "\"></i> <span class=\"menu-text\"> " + sysResource.getName()
+                            + " </span> <b class=\"arrow fa fa-angle-down\"></b></a> <b class=\"arrow\"></b><ul class=\"submenu\">");
+                    for (SysResource sysResourceChild : listResource) {
+                        if (sysResourceChild.getParentId() == sysResource.getId()
+                                && displayResourceIdList.contains(sysResourceChild.getId())) {
+                            sb.append("<li id=\"module_" + sysResourceChild.getId() + "\" class=\"\"><a href=\""
+                                    + pubConfig.getDynamicServer() + "/" + sysResourceChild.getUrl()
+                                    + "\" target=\"" + sysResourceChild.getTarget() + "\"> <i class=\"menu-icon fa fa-caret-right\"></i>" + sysResourceChild.getName()
+                                    + "</a> <b class=\"arrow\"></b></li>");
+                        }
+                    }
+                    sb.append("</ul></li>");
+                }
+            }
+            menu = sb.toString();
+            EhCacheUtil.put("sysCache", "roleMenu_" + role_id, menu);
+        }
+        return menu;
     }
 }

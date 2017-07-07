@@ -21,6 +21,7 @@
         <jdk.version>1.8</jdk.version>
         <sitemesh.version>3.0.1</sitemesh.version>
         <jackson.version>2.5.4</jackson.version>
+        <ehcache.version>2.10.2</ehcache.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
     </properties>
 
@@ -127,6 +128,13 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
+        </dependency>
+
+        <!-- EHCache -->
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>${ehcache.version}</version>
         </dependency>
     </dependencies>
     <build>
