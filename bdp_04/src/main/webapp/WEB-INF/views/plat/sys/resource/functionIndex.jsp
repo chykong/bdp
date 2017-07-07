@@ -96,7 +96,7 @@
 
         // 查询方法
         var searchFunction = function () {
-            var url = "functionIndex.htm?id=${resource.id}";
+            var url = "functionIndex.htm?parentId=${resource.id}";
             window.location = encodeURI(url);
         }
         // 删除
