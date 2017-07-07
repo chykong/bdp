@@ -1,0 +1,24 @@
+* {
+    font-family: 'microsoft yahei', 'Times New Roman', 宋体, Times, serif;
+}
+
+input.valiError {
+    border: 2px solid red;
+    background-color: #FFFFD5;
+}
+
+label.valiError {
+    color: red;
+    margin-left: 4px;
+    margin-top: 4px;
+    float: inherit;
+}
+
+.errMsg {
+    color: red;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+}
