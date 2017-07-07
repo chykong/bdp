@@ -350,22 +350,24 @@ $.extend( $.validator, {
 	},
 
 	messages: {
-		required: "This field is required.",
-		remote: "Please fix this field.",
-		email: "Please enter a valid email address.",
-		url: "Please enter a valid URL.",
-		date: "Please enter a valid date.",
-		dateISO: "Please enter a valid date ( ISO ).",
-		number: "Please enter a valid number.",
-		digits: "Please enter only digits.",
-		equalTo: "Please enter the same value again.",
-		maxlength: $.validator.format( "Please enter no more than {0} characters." ),
-		minlength: $.validator.format( "Please enter at least {0} characters." ),
-		rangelength: $.validator.format( "Please enter a value between {0} and {1} characters long." ),
-		range: $.validator.format( "Please enter a value between {0} and {1}." ),
-		max: $.validator.format( "Please enter a value less than or equal to {0}." ),
-		min: $.validator.format( "Please enter a value greater than or equal to {0}." ),
-		step: $.validator.format( "Please enter a multiple of {0}." )
+		required : "不能为空",
+		remote : "请修正此字段",
+		email : "请输入有效的电子邮件地址",
+		telephone : "请输入正确手机号",
+		url : "请输入有效的网址",
+		date : "请输入有效的日期",
+		dateISO : "请输入有效的日期 (YYYY-MM-DD)",
+		number : "请输入有效的数字",
+		digits : "只能输入数字",
+		creditcard : "请输入有效的信用卡号码",
+		equalTo : "你的输入不相同",
+		extension : "请输入有效的后缀",
+		maxlength : $.validator.format("最多可以输入 {0} 个字符"),
+		minlength : $.validator.format("最少要输入 {0} 个字符"),
+		rangelength : $.validator.format("请输入长度在 {0} 到 {1} 之间的字符串"),
+		range : $.validator.format("请输入范围在 {0} 到 {1} 之间的数值"),
+		max : $.validator.format("请输入不大于 {0} 的数值"),
+		min : $.validator.format("请输入不小于 {0} 的数值")
 	},
 
 	autoCreateRanges: false,
@@ -410,7 +412,7 @@ $.extend( $.validator, {
 			$( this.currentForm )
 				.on( "focusin.validate focusout.validate keyup.validate",
 					":text, [type='password'], [type='file'], select, textarea, [type='number'], [type='search'], " +
-					"[type='tel'], [type='url'], [type='email'], [type='datetime'], [type='date'], [type='month'], " +
+					"[type='tel'], [type='url'], [type='email'],[type='telephone'], [type='datetime'], [type='date'], [type='month'], " +
 					"[type='week'], [type='time'], [type='datetime-local'], [type='range'], [type='color'], " +
 					"[type='radio'], [type='checkbox'], [contenteditable]", delegate )
 
@@ -1103,6 +1105,7 @@ $.extend( $.validator, {
 	classRuleSettings: {
 		required: { required: true },
 		email: { email: true },
+		telephone: { telephone: true },
 		url: { url: true },
 		date: { date: true },
 		dateISO: { dateISO: true },
@@ -1335,6 +1338,14 @@ $.extend( $.validator, {
 			// If you have a problem with this implementation, report a bug against the above spec
 			// Or use custom methods to implement your own email validation
 			return this.optional( element ) || /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test( value );
+		},
+		telephone: function( value, element ) {
+			
+			// From https://html.spec.whatwg.org/multipage/forms.html#valid-e-mail-address
+			// Retrieved 2014-01-14
+			// If you have a problem with this implementation, report a bug against the above spec
+			// Or use custom methods to implement your own email validation
+			return this.optional(element) || /^1[3-9]\d{9}$/.test(value);
 		},
 
 		// http://jqueryvalidation.org/url-method/

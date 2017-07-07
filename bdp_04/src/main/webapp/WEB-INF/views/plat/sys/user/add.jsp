@@ -76,6 +76,9 @@
     </div>
 </div>
 
+</body>
+
+<critc-script>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#userForm").validate({
@@ -123,4 +126,4 @@
         });
     });
 </script>
-</body>
+</critc-script>
