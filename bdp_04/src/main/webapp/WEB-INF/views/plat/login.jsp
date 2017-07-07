@@ -5,11 +5,11 @@
 <head>
     <title>${webTitle}</title>
     <%@ include file="common/styles.jspf" %>
-    <script src="${staticServer }/assets/ace1.4/js/userBrower.js"></script>
-    <script src="${staticServer }/assets/ace1.4/js/jCookie.js"></script>
+    <link rel="stylesheet" href="${staticServer}/assets/common/css/login.css?versionNo=${versionNo}" />
+
 </head>
 
-<body class="login-layout">
+<body class="login-layout  login-back">
 <div class="main-container login-main-container">
     <div class="main-content">
         <div class="row">
@@ -78,6 +78,8 @@
 
 
 <%@ include file="common/scripts.jspf" %>
+<script src="${staticServer }/assets/common/js/userBrower.js"></script>
+<script src="${staticServer }/assets/common/js/jCookie.js"></script>
 
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
