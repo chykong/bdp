@@ -10,4 +10,3 @@
 <link rel="stylesheet" href="${staticServer}/assets/ace1.4/css/ace-skins.css" />
 <link rel="stylesheet" type="text/css" href="${staticServer }/assets/datetimepicker2.1.9/jquery.datetimepicker.css"/>
 
-<link rel="stylesheet" href="${staticServer}/assets/common/common.css?versionNo=${versionNo}" />
