@@ -1,0 +1,12 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!-- bootstrap & fontawesome -->
+<link rel="stylesheet" href="${staticServer}/assets/ace1.4/css/bootstrap.css" />
+<link rel="stylesheet" href="${staticServer}/assets/ace1.4/components/font-awesome/css/font-awesome.css" />
+<!-- page specific plugin styles -->
+<!-- text fonts -->
+<link rel="stylesheet" href="${staticServer}/assets/ace1.4/css/ace-fonts.css" />
+<!-- ace styles -->
+<link rel="stylesheet" href="${staticServer}/assets/ace1.4/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+<link rel="stylesheet" href="${staticServer}/assets/ace1.4/css/ace-skins.css" />
+<link rel="stylesheet" type="text/css" href="${staticServer }/assets/datetimepicker2.1.9/jquery.datetimepicker.css"/>
+<link rel="stylesheet" href="${staticServer}/assets/common/css/common.css?versionNo=${versionNo}" />

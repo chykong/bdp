@@ -10,6 +10,7 @@
       <module>bdp_02</module>
       <module>bdp_03</module>
       <module>bdp_04</module>
+      <module>bdp_05</module>
   </modules>
   <packaging>pom</packaging>
 
