@@ -1,5 +1,6 @@
 package com.critc.plat.sys.controller;
 
+import com.critc.plat.core.controller.BaseController;
 import com.critc.plat.core.pub.PubConfig;
 import com.critc.plat.sys.model.SysUser;
 import com.critc.plat.sys.model.SysUserLogin;
@@ -29,7 +30,7 @@ import java.util.List;
  */
 @RequestMapping("/sys/user")
 @Controller
-public class SysUserController {
+public class SysUserController  extends BaseController {
     @Autowired
     private SysUserService sysUserService;
     @Autowired

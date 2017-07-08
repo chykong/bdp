@@ -1,5 +1,6 @@
 package com.critc.plat.sys.controller;
 
+import com.critc.plat.core.controller.BaseController;
 import com.critc.plat.core.pub.PubConfig;
 import com.critc.plat.sys.model.SysResource;
 import com.critc.plat.sys.model.SysRole;
@@ -25,7 +26,7 @@ import java.util.List;
  */
 @RequestMapping("/sys/role")
 @Controller
-public class SysRoleController {
+public class SysRoleController  extends BaseController {
     @Autowired
     private SysRoleService sysRoleService;
     @Autowired

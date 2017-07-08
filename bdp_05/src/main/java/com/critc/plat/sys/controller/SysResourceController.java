@@ -1,5 +1,6 @@
 package com.critc.plat.sys.controller;
 
+import com.critc.plat.core.controller.BaseController;
 import com.critc.plat.core.pub.PubConfig;
 import com.critc.plat.sys.model.SysResource;
 import com.critc.plat.sys.service.SysResourceService;
@@ -22,7 +23,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/sys/resource")
-public class SysResourceController {
+public class SysResourceController extends BaseController {
     @Autowired
     private SysResourceService sysResourceService;
     @Autowired

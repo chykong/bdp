@@ -1,5 +1,6 @@
 package com.critc.plat.sys.controller;
 
+import com.critc.plat.core.controller.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @RequestMapping("/")
 @Controller
-public class SysIndexController {
+public class SysIndexController  extends BaseController {
     /**
      * 进入用户管理界面
      *

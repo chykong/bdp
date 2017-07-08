@@ -1,5 +1,6 @@
 package com.critc.plat.sys.controller;
 
+import com.critc.plat.core.controller.BaseController;
 import com.critc.plat.core.pub.PubConfig;
 import com.critc.plat.sys.model.SysLog;
 import com.critc.plat.sys.service.SysLogService;
@@ -25,7 +26,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/sys/log")
-public class SysLogController{
+public class SysLogController extends BaseController {
     @Autowired
     private SysLogService sysLogService;
     @Autowired
