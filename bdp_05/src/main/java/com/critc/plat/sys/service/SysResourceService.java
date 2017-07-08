@@ -2,11 +2,13 @@ package com.critc.plat.sys.service;
 
 import com.critc.plat.sys.dao.SysResourceDao;
 import com.critc.plat.sys.model.SysResource;
+import com.critc.plat.util.cache.EhCacheUtil;
 import com.critc.plat.util.string.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -136,6 +138,26 @@ public class SysResourceService {
      */
     public List<SysResource> listByParentId(int parentId) {
         return sysResourceDao.listByParentId(parentId);
+    }
+
+    /**
+     * 从缓存中获取所有资源
+     *
+     * @return
+     */
+    public HashMap<String, SysResource> getAllResource() {
+        HashMap<String, SysResource> hashMap = EhCacheUtil.get("sysCache", "sysAllResource");
+        if (hashMap == null) {
+            hashMap = new HashMap<>();
+            List<SysResource> listResource = sysResourceDao.list();// 资源列表
+            for (SysResource sysResource : listResource) {
+                if (!sysResource.getUrl().equals("#")) {
+                    hashMap.put(sysResource.getUrl(), sysResource);
+                }
+            }
+            EhCacheUtil.put("sysCache", "sysAllResource", hashMap);
+        }
+        return hashMap;
     }
 
 }

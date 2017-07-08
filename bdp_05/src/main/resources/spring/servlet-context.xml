@@ -49,4 +49,19 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
+    <!--设置拦截器，处理登录及权限控制-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/index.htm"/>
+            <mvc:mapping path="/sys/*/*"/>
+            <bean class="com.critc.plat.core.interceptor.CheckLoginInterceptor"></bean>
+        </mvc:interceptor>
+        <!-- -->
+        <mvc:interceptor>
+            <mvc:mapping path="/sys/*/*"/>
+            <bean class="com.critc.plat.core.interceptor.AuthorityInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
 </beans>

@@ -207,4 +207,19 @@ public class SysRoleService {
         }
         return menu;
     }
+
+    /**
+     * 校验所有权限，防止不通过浏览器提交
+     *
+     * @param roleId 角色id
+     * @param path   url路径
+     * @return
+     */
+    public boolean checkAuthority(int roleId, String path) {
+        HashMap<String, Integer> hashRoleResources = getRoleResources(roleId);
+        if (!hashRoleResources.containsKey(path) || hashRoleResources.get(path) == 1)
+            return true;
+        else
+            return false;
+    }
 }
