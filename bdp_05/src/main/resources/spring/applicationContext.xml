@@ -68,4 +68,16 @@
         <property name="staticServer" value="${staticServer}"/>
         <property name="dynamicServer" value="${dynamicServer}"/>
     </bean>
+
+
+    <!--添加声明，为Spring容器中那些匹配@AspectJ切面的Bean创建代理，其中的proxy-target-class="true"
+        表示使用CGLib动态代理技术织入增强 -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!--dao和service异常切面 -->
+    <bean id="daoExceptionAspect" class="com.critc.plat.core.aop.DaoExceptionAspect"/>
+    <bean id="serviceExceptionAspect" class="com.critc.plat.core.aop.ServiceExceptionAspect"/>
+
+    <!-- 系统性能监控切面-->
+    <bean id="performanceAspect" class="com.critc.plat.core.aop.PerformanceAspect"/>
+
 </beans>
