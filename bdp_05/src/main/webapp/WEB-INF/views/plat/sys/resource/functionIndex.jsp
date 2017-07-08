@@ -32,9 +32,11 @@
                                     <button class="btn btn-primary btn-sm" id="btnSearch">
                                         <i class="ace-icon fa fa-search"></i>刷新
                                     </button>
-                                    <button type="button" class="btn btn-success btn-sm" id="btnAdd">
-                                        <i class="ace-icon fa fa-plus bigger-110"></i>新增
-                                    </button>
+                                    <c:if test="${critc:isP('SysResourceAdd')}">
+                                        <button type="button" class="btn btn-success btn-sm" id="btnAdd">
+                                            <i class="ace-icon fa fa-plus bigger-110"></i>新增
+                                        </button>
+                                    </c:if>
 
                                     <button type="button" class="btn  btn-sm"
                                             onclick="location.href='${dynamicServer}/sys/resource/index.htm'">
@@ -72,10 +74,12 @@
                         <td>${resource.code}</td>
                         <td>${resource.url}</td>
                         <td>${resource.displayOrder}</td>
-                        <td>
-                            <a href="toUpdate.htm?id=${resource.id}&backUrl=${backUrl}"> 修改 </a>
+                        <td><c:if test="${critc:isP('SysResourceUpdate')}">
+                            <a href="toUpdate.htm?id=${resource.id}&backUrl=${backUrl}"> 修改</i>
+                            </a>
+                        </c:if> <c:if test="${critc:isP('SysResourceDelete')}">
                             <a href="javascript:delFunction(${resource.id });"> 删除 </a>
-                        </td>
+                        </c:if></td>
                     </tr>
                 </c:forEach>
                 </tbody>

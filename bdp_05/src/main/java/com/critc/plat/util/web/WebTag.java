@@ -42,4 +42,15 @@ public class WebTag {
         SysRoleService sysRoleService = SpringContextHolder.getBean("sysRoleService");
         return sysRoleService.createMenuStr(userSession.getRoleId());
     }
+
+    /**
+     * 判断按钮权限
+     *
+     * @param buttonCode
+     * @return
+     */
+    public static boolean isPrivilege(String buttonCode) {
+        SysRoleService sysRoleService = SpringContextHolder.getBean("sysRoleService");
+        return sysRoleService.checkBtnPrivilege(buttonCode);
+    }
 }

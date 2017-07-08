@@ -33,9 +33,11 @@
                                     <button class="btn btn-primary btn-sm" id="btnSearch">
                                         <i class="ace-icon fa fa-search"></i> 刷新
                                     </button>
-                                    <button type="button" class="btn btn-success btn-sm" id="btnAdd">
-                                        <i class="ace-icon fa fa-plus bigger-110"></i>新增
-                                    </button>
+                                    <c:if test="${critc:isP('SysRoleAdd')}">
+                                        <button type="button" class="btn btn-success btn-sm" id="btnAdd">
+                                            <i class="ace-icon fa fa-plus bigger-110"></i>新增
+                                        </button>
+                                    </c:if>
                                 </td>
                             </tr>
                         </table>
@@ -68,10 +70,11 @@
                         <td>${sysRole.createdBy }</td>
                         <th width=120><fmt:formatDate value="${sysRole.createdAt}"
                                                       pattern="yyyy-MM-dd HH:mm"/></th>
-                        <td>
+                        <td><c:if test="${critc:isP('SysRoleUpdate')}">
                             <a href="toUpdate.htm?id=${sysRole.id }&backUrl=${backUrl}"> 修改 </a>
+                        </c:if> <c:if test="${critc:isP('SysRoleDelete')}">
                             <a href="javascript:delRole(${sysRole.id });"> 删除 </a>
-                        </td>
+                        </c:if></td>
                     </tr>
                 </c:forEach>
                 </tbody>

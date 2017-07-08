@@ -31,7 +31,7 @@ public class SysRoleresourceDao extends BaseDao<SysRoleResource, SysRoleResource
      * @return
      */
     public List<SysRoleResource> listRoleResource(int roleId) {
-        String sql = "select s.url,nvl((select id from t_sys_roleresource where role_id=? and resource_id=s.id),0) resourceId " +
+        String sql = "select s.url,ifnull((select id from t_sys_roleresource where role_id=? and resource_id=s.id),0) resourceId " +
                 " from t_sys_resource s  where s.url!='#'";
         return list(sql, roleId);
     }

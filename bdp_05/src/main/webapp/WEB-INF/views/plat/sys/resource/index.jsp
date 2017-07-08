@@ -35,9 +35,11 @@
                                     <button class="btn btn-primary btn-sm" id="btnSearch">
                                         <i class="ace-icon fa fa-search"></i> 刷新
                                     </button>
+                                    <c:if test="${critc:isP('SysResourceAdd')}">
                                         <button type="button" class="btn btn-success btn-sm" id="btnAdd">
                                             <i class="ace-icon fa fa-plus bigger-110"></i>新增
                                         </button>
+                                    </c:if>
                                 </td>
                             </tr>
                         </table>
@@ -75,9 +77,12 @@
                         </td>
                         <td style="text-align: center;">${resource.displayOrder}</td>
                         <td>
-                            <a href="toUpdate.htm?id=${resource.id}&backUrl=${backUrl}"> 修改</i>
-                            </a>
+                            <c:if test="${critc:isP('SysResourceAdd')}">
+                                <a href="toUpdate.htm?id=${resource.id}&backUrl=${backUrl}"> 修改</i>
+                                </a>
+                            </c:if> <c:if test="${critc:isP('SysResourceDelete')}">
                             <a href="javascript:delModule(${resource.id });"> 删除 </a>
+                        </c:if>
                             <a href="${dynamicServer }/sys/resource/functionIndex.htm?parentId=${resource.id }">功能设置 </a>
                         </td>
                     </tr>

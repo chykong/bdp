@@ -53,9 +53,11 @@
                                     <button class="btn btn-primary btn-sm" id="btnSearch">
                                         <i class="ace-icon fa fa-search"></i> 查询
                                     </button>
-                                    <button type="button" class="btn btn-success btn-sm" id="btnAdd">
-                                        <i class="ace-icon fa fa-plus bigger-110"></i>新增
-                                    </button>
+                                    <c:if test="${critc:isP('SysUserAdd')}">
+                                        <button type="button" class="btn btn-success btn-sm" id="btnAdd">
+                                            <i class="ace-icon fa fa-plus bigger-110"></i>新增
+                                        </button>
+                                    </c:if>
                                 </td>
                             </tr>
                         </table>
@@ -97,16 +99,17 @@
                         <td>
                             <a href="javascript:viewLoginHis('${sysUser.id}','${sysUser.username}')">查看 </a>
                         </td>
-                        <td>
+                        <td><c:if test="${critc:isP('SysUserUpdate')}">
                             <a href="toUpdate.htm?id=${sysUser.id }&backUrl=${backUrl}"> 修改 </a>
+                        </c:if> <c:if test="${critc:isP('SysUserDelete')}">
                             <a href="javascript:delUser(${sysUser.id });"> 删除 </a>
-                            <c:if test="${sysUser.status==1}">
-                                <a href="javascript:lock(${sysUser.id });">锁定 </a>
-                            </c:if> <c:if test="${sysUser.status==2}">
+                        </c:if> <c:if test="${critc:isP('SysUserLock')&&sysUser.status==1}">
+                            <a href="javascript:lock(${sysUser.id });">锁定 </a>
+                        </c:if> <c:if test="${critc:isP('SysUserUnlock')&&sysUser.status==2}">
                             <a href="javascript:unlock(${sysUser.id });">解锁 </a>
-                        </c:if>
+                        </c:if> <c:if test="${critc:isP('SysUserResetPass')}">
                             <a href="javascript:resetPass(${sysUser.id });">重置密码 </a>
-                        </td>
+                        </c:if></td>
                     </tr>
                 </c:forEach>
                 </tbody>

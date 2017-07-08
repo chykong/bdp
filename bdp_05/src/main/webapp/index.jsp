@@ -1,5 +1,6 @@
 <html>
 <body>
-<h2>Hello World!</h2>
-</body>
+<script>
+    location.href='login.htm';
+</script></body>
 </html>

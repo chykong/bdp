@@ -19,4 +19,11 @@
 		<function-class>com.critc.plat.util.web.WebTag</function-class>
 		<function-signature>java.lang.String createMenu(javax.servlet.http.HttpServletRequest)</function-signature>
 	</function>
+
+	<function>
+		<description>校验按钮权限</description>
+		<name>isP</name>
+		<function-class>com.critc.plat.util.web.WebTag</function-class>
+		<function-signature>boolean isPrivilege(java.lang.String)</function-signature>
+	</function>
 </taglib>
