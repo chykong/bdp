@@ -23,6 +23,7 @@
         <jackson.version>2.5.4</jackson.version>
         <ehcache.version>2.10.2</ehcache.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-war-plugin.version>2.1.1</maven-war-plugin.version>
     </properties>
 
     <dependencies>
@@ -137,8 +138,41 @@
             <version>${ehcache.version}</version>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <!-- 本地开发环境 -->
+            <id>dev</id>
+            <properties>
+                <package.environment>dev</package.environment>
+            </properties>
+        </profile>
+        <profile>
+            <!-- 生产环境 -->
+            <id>prod</id>
+            <properties>
+                <package.environment>prod</package.environment>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
+
     <build>
         <finalName>bdp_05</finalName>
+        <defaultGoal>compile</defaultGoal>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -147,6 +181,24 @@
                 <configuration>
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                    <warName>bdp_05</warName>
+                    <webResources>
+                        <resource>
+                            <directory>profiles/${package.environment}</directory>
+                            <targetPath>WEB-INF/classes</targetPath>
+                            <filtering>true</filtering>
+                        </resource>
+                    </webResources>
                 </configuration>
             </plugin>
         </plugins>
